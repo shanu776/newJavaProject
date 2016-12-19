@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition" template="WEB-INF/jsp/layout/layout.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+	     <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/layout/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />  
+	</definition>
+	
+	<definition name="base.definition1" template="WEB-INF/jsp/layout/layout1.jsp">
+	 <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
+	 <put-attribute name="body" value="" />
+	</definition>
+	
+	<definition name="login" extends="base.definition1">
+	<put-attribute name="title" value="LOGIN"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="sales" extends="base.definition1">
+	<put-attribute name="title" value="SALES_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/salesHeader.jsp"></put-attribute>	
+	<put-attribute name="body" value="/WEB-INF/jsp/sales.jsp"></put-attribute>	
+	</definition>
+		
+	<definition name="addCustomerSales" extends="base.definition1">
+	<put-attribute name="title" value="SALES_HOME"></put-attribute>	
+	<put-attribute name="header" value="/WEB-INF/jsp/salesHeader.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/addCustomerSales.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="viewCustomerSales" extends="base.definition1">
+	<put-attribute name="title" value="SALES_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/salesHeader.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/viewCustomerSales.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/admin.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="addCustomerSalesAdmin" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/addCustomerSales.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="viewCustomerSalesAdmin" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/viewCustomerSales.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="addCompany" extends="base.definition1">
+	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/addCompany.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="addUser" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/addUser.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="viewUser" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/viewUser.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="addProduct" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/addProduct.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="viewProduct" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/viewProduct.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="addServices" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/addServices.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="viewServices" extends="base.definition">
+	<put-attribute name="title" value="ADMIN_HOME"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/jsp/adminHeader.jsp"></put-attribute>
+	<put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/jsp/viewServices.jsp"></put-attribute>
+	<put-attribute name="footer" value=""></put-attribute>
+	</definition>
+	
+	<definition name="showState" template="/WEB-INF/jsp/showState.jsp"></definition>
+	<definition name="showCity" template="/WEB-INF/jsp/showCity.jsp"></definition>
+</tiles-definitions>
