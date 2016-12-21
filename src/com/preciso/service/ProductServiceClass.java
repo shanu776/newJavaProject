@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.preciso.dao.ProductDao;
 import com.preciso.model.Product;
+import com.preciso.model.RelatedItems;
 @Service
 @Transactional(propagation=Propagation.SUPPORTS,readOnly=true)
 public class ProductServiceClass implements ProductService{
@@ -38,6 +39,12 @@ public class ProductServiceClass implements ProductService{
 	public void deleteProductData(Product product) {
 		// TODO Auto-generated method stub
 		productDao.deleteProductData(product);
+	}
+
+	@Override
+	public List<RelatedItems> relatedItems(Product product) {
+		// TODO Auto-generated method stub
+		return productDao.relatedItems(product);
 	}
 
 }

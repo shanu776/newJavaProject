@@ -42,20 +42,23 @@ public class Sales_Controller {
 	public ModelAndView saveSalesCustomerData(@ModelAttribute("command") @Valid AddCustomerSalesBean addCustomerSalesBean,
 			CustomerLocation location,CustomerDepartment department,BindingResult result,HttpServletRequest request)
 	{
-		HttpSession session=request.getSession();
+		
 		Country cont=cscService.getCountry(Integer.parseInt(addCustomerSalesBean.getCountry()));
 		State state=cscService.getState1(Integer.parseInt(addCustomerSalesBean.getState()));
+		
+		HttpSession session=request.getSession();
 		String name=(String) session.getAttribute("name");
 		String customer=(String) session.getAttribute("customer");
+		
 		List<CustomerLocation> loc=new ArrayList<CustomerLocation>();
 		List<CustomerDepartment> dep=new ArrayList<CustomerDepartment>();
 		StringTokenizer st=new StringTokenizer(location.getLocation_name(), ",");
 		StringTokenizer st1=new StringTokenizer(department.getDepartment_name(), ",");
 		while (st.hasMoreElements()) {
-			loc.add(new CustomerLocation(st.nextToken()));			
+			loc.add(new CustomerLocation(st.nextToken()));
 		}		
 		while (st1.hasMoreElements()) {
-			dep.add(new CustomerDepartment(st1.nextToken()));			
+			dep.add(new CustomerDepartment(st1.nextToken()));
 		}
 		addCustomerSalesBean.setLocation(loc);
 		addCustomerSalesBean.setDepartment(dep);

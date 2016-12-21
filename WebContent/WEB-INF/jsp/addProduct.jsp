@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+    <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,33 +21,167 @@ margin-right:50%;
 </style>
 </head>
 <body>
-<form:form action="saveProduct.html" method="post" modelAttribute="product">
-<form:hidden path="product_id"/>
-<div class="container" style="margin-left: 25%;">
-<table>
-<tr>
-	<td><form:label path="product_card">Product_card</form:label></td>
-	<td><form:input path="product_card" class="form-control input-lg" id="focusedInput" placeholder="Product_card" value="${product.product_card }"/></td>
-</tr>
-<tr>
-	<td><form:label path="buying_price">Buying_Price</form:label></td>
-	<td><form:input path="buying_price" class="form-control input-lg" id="focusedInput" placeholder="Buying_Price" value="${product.buying_price }"/></td>
-</tr>
-<tr>
-	<td><form:label path="statistics">Statistics</form:label></td>
-	<td><form:input path="statistics" class="form-control input-lg" id="focusedInput" placeholder="Statistics" value="${product.statistics }"/></td>
-</tr>
-<tr>
-	<td><form:label path="related_items">Related_Items</form:label></td>
-	<td><form:input path="related_items" class="form-control input-lg" id="focusedInput" placeholder="Related_Items" value="${product.related_items }"/></td>
-</tr>
-<tr>
-	<td><form:label path="stock">Stock</form:label></td>
-	<td><form:input path="stock" class="form-control input-lg" id="focusedInput" placeholder="Stock" value="${product.stock }"/></td>
-</tr>
-</table>
+<form action="saveProduct.html" method="post">
+<spring:bind path="product.product_id">
+	<input type="hidden" name="${status.expression}" value="${products.product_id}">
+</spring:bind>
+<div class="add-customer-sales1">
+	<table>
+	<tr>
+		<spring:bind path="product.product_description">
+		<td><label>Product Description:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.product_description }" placeholder="Product Description">
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.product_sales">
+		<td><label>Sales:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.product_sales }" placeholder="Sales" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.status_purchase">
+		<td><label>Purchase:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.status_purchase }" placeholder="Purchase" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.sr_no">
+		<td><label>Sr_NO:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.sr_no }" placeholder="Sr_NO" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.weight">
+		<td><label>Weight:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.weight }" placeholder="Weight" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.dimension">
+		<td><label>Dimension:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.dimension }" placeholder="Dimension" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.selling_price">
+		<td><label>Selling Price:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.selling_price }" placeholder="Selling_Price" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.min_selling_price">
+		<td><label>Min Selling Price:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.min_selling_price }" placeholder="Min Selling Price" >
+		</td>
+		</spring:bind>
+	</tr>
+	</table>
 </div>
+
+
+<div class="add-customer-sales2">
+	<table>
+	<tr>
+		<spring:bind path="product.min_buying_price">
+		<td><label>Min Buying Price:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.min_buying_price }" placeholder="Min Buying Price" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.tax">
+		<td><label>Tax:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.tax }" placeholder="Tax" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.stock_limit">
+		<td><label>Stock Limit:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.stock_limit }" placeholder="Stock Limit" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.product_card">
+		<td><label>Product Card:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.product_card }" placeholder="Product Card" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.buying_price">
+		<td><label>Buying Price:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.buying_price }" placeholder="Buying Price" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.statistics">
+		<td><label>Statistics:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.statistics }" placeholder="Statistics" >
+		</td>
+		</spring:bind>
+	</tr>
+	<tr>
+		<spring:bind path="product.stock">
+		<td><label>Stock:</label></td>
+		<td>
+		<input type="text"name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${products.stock }" placeholder="Stock" >
+		</td>
+		</spring:bind>
+	</tr>
+		<spring:bind path="related_items.item_name">
+		 <tr>
+		  <td></td>
+			  <td>
+			  	<c:forEach items="${products.related_items}" var="ri">
+					<input type="text" name="${status.expression}" class="form-control input-lg" id="focusedInput" value="${ri}">
+				</c:forEach>
+			  </td>
+		 </tr>
+		<tr id="itemTag">
+		<td><label>Related Items:</label></td>
+		<td>
+		<input type="text" name="${status.expression}" class="form-control input-lg" id="focusedInput" value="" placeholder="Related Items" >
+		</td>
+		<td><input type="button" value="+" id="btn"></td>
+		</tr>
+		</spring:bind>
+	</table>
+</div>
+
 <input class="btn btn-default" type="submit">
-</form:form>
+</form>
+<script type="text/javascript">
+$(document).ready(function(){ 
+	$('#btn').click(function(){	
+	$("<tr><td></td><td><input type='text' name='item_name' class='form-control input-lg' pattern='^[a-zA-Z0-9]+$' placeholder='Related_Items' value=''/></td></tr>")
+	.insertAfter("#itemTag");
+	});
+});
+</script>
 </body>
 </html>

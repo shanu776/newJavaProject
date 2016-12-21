@@ -2,6 +2,8 @@ package com.preciso.dao;
 
 import java.util.List;
 
+import com.preciso.model.Product;
+import com.preciso.model.RelatedItems;
 import com.preciso.model.Services;
 
 public interface ServicesDao {

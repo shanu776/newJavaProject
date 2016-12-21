@@ -64,6 +64,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
   	<value>com.preciso.model.Country</value>
   	<value>com.preciso.model.City</value>
   	<value>com.preciso.model.State</value>
+  	<value>com.preciso.model.RelatedItems</value>
 </list>
 </property>
 <property name="hibernateProperties">

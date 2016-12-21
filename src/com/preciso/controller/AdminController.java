@@ -3,23 +3,22 @@ package com.preciso.controller;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.InetAddress;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.jasper.tagplugins.jstl.core.Url;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,14 +27,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.preciso.model.Company;
+import com.preciso.model.Country;
+import com.preciso.model.CustomerLocation;
 import com.preciso.model.Department;
 import com.preciso.model.Location;
 import com.preciso.model.Product;
+import com.preciso.model.RelatedItems;
 import com.preciso.model.Services;
+import com.preciso.model.State;
 import com.preciso.model.User;
 import com.preciso.service.AddCompanyService;
 import com.preciso.service.AddDepartmentService;
 import com.preciso.service.AddLocationService;
+import com.preciso.service.CSCService;
 import com.preciso.service.ProductService;
 import com.preciso.service.ServicesService;
 import com.preciso.service.UserService;
@@ -55,7 +59,8 @@ public class AdminController {
 	private ProductService productService;
 	@Autowired
 	private ServicesService servicesService;
-	
+	@Autowired
+	private CSCService cscService;
 	private List<Company> list;
 	Map<String, Object> model=new HashMap<String, Object>();
 	
@@ -76,6 +81,7 @@ public class AdminController {
 	{
 		Map<String, Object> model=new HashMap<String,Object>();		
 		//model.put("company", addCompanyService.getCompanyData(company.getId()));
+		model.put("country", cscService.getCountry());
 		model.put("location", addLocationService.listAddLocation());
 		model.put("department", addDepartmentService.listAddDepartment());
 		return new ModelAndView("addCompany",model);		
@@ -106,6 +112,10 @@ public class AdminController {
 	@RequestMapping(value="/saveLocation")
 	public ModelAndView saveLocation(Location location)
 	{
+		Country cont=cscService.getCountry(Integer.parseInt(location.getCountry()));
+		State state=cscService.getState1(Integer.parseInt(location.getState()));
+		location.setCountry(cont.getName());
+		location.setState(state.getName());
 		addLocationService.addLocation(location);
 		return new ModelAndView("redirect:createCompany.html");
 	}
@@ -137,6 +147,7 @@ public class AdminController {
 			@ModelAttribute("location") Location location)
 	{
 		Map<String, Object> model=new HashMap<String, Object>();
+		model.put("country", cscService.getCountry());
 		model.put("company", addCompanyService.getCompanyData(company.getId()));
 		model.put("location", addLocationService.listAddLocation());
 		model.put("department", addDepartmentService.listAddDepartment());
@@ -223,31 +234,47 @@ public class AdminController {
 /*----------------------------------------------------------------Product----------------------------------------------------------------*/
 	
 	@RequestMapping("productForm")
-	public ModelAndView productForm(@ModelAttribute("product") Product product)
+	public ModelAndView productForm(@ModelAttribute("product") Product product,@ModelAttribute("related_items") RelatedItems related_items)
 	{
 		return new ModelAndView("addProduct");
 	}
 	
 	@RequestMapping(value="saveProduct",method=RequestMethod.POST)
-	public ModelAndView saveProduct(Product product)
+	public ModelAndView saveProduct(Product product,RelatedItems related_items)
 	{
+		List<RelatedItems> list=new ArrayList<RelatedItems>();
+		StringTokenizer st1=new StringTokenizer(related_items.getItem_name(), ",");
+		while (st1.hasMoreElements()) {
+			list.add(new RelatedItems(st1.nextToken()));
+		}	
+		System.out.println(product.getProduct_description());
+		product.setRelated_items(list);
 		productService.addProduct(product);
 		return new ModelAndView("redirect:productForm.html");
 	}
 	
 	@RequestMapping(value="viewProduct")
-	public ModelAndView viewProduct()
+	public ModelAndView viewProduct(Product product)
 	{
+		List<Product> list=productService.listProduct();
+		for(Product pro:list)
+		{
+			List<RelatedItems> li=productService.relatedItems(pro);			
+			pro.setRelated_items(li);
+		}
 		Map<String, Object> model=new HashMap<String, Object>();
-		model.put("products", productService.listProduct());
+		model.put("products", list);
 		return new ModelAndView("viewProduct",model);
 	}
 	
 	@RequestMapping(value="updateProduct")
-	public ModelAndView updateProduct(Product product)
+	public ModelAndView updateProduct(Product product,@ModelAttribute("related_items") RelatedItems related_items)
 	{
 		Map<String, Object> model=new HashMap<String, Object>();
-		model.put("product", productService.getProductData(product.getProduct_id()));
+		Product list=productService.getProductData(product.getProduct_id());
+		List<RelatedItems>list1=productService.relatedItems(product);
+		list.setRelated_items(list1);
+		model.put("products",list);
 		return new ModelAndView("addProduct",model);
 	}
 	

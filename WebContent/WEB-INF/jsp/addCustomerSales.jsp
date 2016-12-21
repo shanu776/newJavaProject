@@ -113,7 +113,7 @@ margin-right: 50%;
   <tr id="locTag">
 	<td><label>Location:</label></td>
   	<td><input type="text" name="${status.expression }" class="form-control input-lg spchar" id="spchar" placeholder="Location" value=""/></td>
-  	<td><input type="button" value="add" id="btn1"></td>  	
+  	<td><input type="button" value="+" id="btn1"></td>  	
   </tr>
   
   </spring:bind>
@@ -218,7 +218,7 @@ margin-right: 50%;
   <tr id="depTag">  
 	<td><label>Department:</label></td>
   	<td><input type="text" name="${status.expression }" class="form-control input-lg spchar" id="spchar" placeholder="Department" value=""/></td>
-  	<td><input type="button" value="add" id="btn2"></td>
+  	<td><input type="button" value="+" id="btn2"></td>
   </tr>
   </spring:bind>  
   

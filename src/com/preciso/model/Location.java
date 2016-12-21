@@ -18,6 +18,9 @@ public class Location {
 	private String city;
 	@Column(name="state")
 	private String state;
+	@Column(name="country")
+	private String country;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -35,6 +38,12 @@ public class Location {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.preciso.model.Product;
+import com.preciso.model.RelatedItems;
 @Repository("productDao")
 public class ProductDaoClass implements ProductDao{
 
@@ -28,14 +29,28 @@ public class ProductDaoClass implements ProductDao{
 	@Override
 	public Product getProductData(int id) {
 		// TODO Auto-generated method stub
+		System.out.println(id);
 		return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
 	}
 
 	@Override
 	public void deleteProductData(Product product) {
 		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().createSQLQuery("SET FOREIGN_KEY_CHECKS=0").executeUpdate();
+		sessionFactory.getCurrentSession().createSQLQuery("delete from related_items where item_id in(select item_id from related_items_fk"
+				+ " where product_id="+product.getProduct_id()+")").executeUpdate();
+		sessionFactory.getCurrentSession().createSQLQuery("SET FOREIGN_KEY_CHECKS=1").executeUpdate();
+		sessionFactory.getCurrentSession().createSQLQuery("delete from related_items_fk where product_id="+product.getProduct_id()).executeUpdate();
 		sessionFactory.getCurrentSession().createQuery("DELETE FROM Product WHERE Id="+product.getProduct_id()).executeUpdate();
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<RelatedItems> relatedItems(Product product) {
+		// TODO Auto-generated method stub
+		return (List<RelatedItems>)sessionFactory.getCurrentSession().createSQLQuery("select item_name from related_items ri join related_items_fk rik on "
+				+ "ri.item_id=rik.item_id where rik.product_id="+product.getProduct_id()).list();
 	}
 
 }

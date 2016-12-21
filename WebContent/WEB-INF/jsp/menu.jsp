@@ -42,8 +42,8 @@ text-decoration: none;
 <ul>
 <c:if test="${!empty company }">
 <c:forEach items="${company }" var="cp">
-<li class="menuli"><a href="updateCompany.html?id=${cp.id }" style="text-decoration: none;">&nbsp; &nbsp; &nbsp;Update Company</a></li>
-<li class="menuli"><a href="deleteCompany.html?id=${cp.id }" style="text-decoration: none;">&nbsp; &nbsp; &nbsp;Delete Company</a>
+<li class="menuli"><a href="updateCompany.html?id=${cp.id }" style="text-decoration: none;">&nbsp; &nbsp; &nbsp;Update </a></li>
+<li class="menuli"><a href="deleteCompany.html?id=${cp.id }" style="text-decoration: none;">&nbsp; &nbsp; &nbsp;Delete </a>
 </li>
 </c:forEach>
 </c:if>
