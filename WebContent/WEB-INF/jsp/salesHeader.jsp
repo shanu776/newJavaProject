@@ -35,7 +35,8 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer<span class="caret"></span></a>
         <ul class="dropdown-menu">
         <li><a href="addSalesCustomerForm.html">AddCustomer</a></li>
-        <li><a href="viewSalesCustomerData.html">ViewCustomer</a></li>        
+        <li><a href="viewSalesCustomerData.html">ViewCustomer</a></li>    
+        <li><a href="customerReport.html">report</a></li>      
         </ul>
         </li> 
                

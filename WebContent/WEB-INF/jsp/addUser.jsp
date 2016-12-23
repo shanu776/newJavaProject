@@ -7,7 +7,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<script type="text/javascript">
+$(document).ready(function(){
+$("#spchar").on("keypress",function(){
+	 var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	    if (!regex.test(key)) {
+	     /*   event.preventDefault(); */
+	       return false;}
+});
+});
+</script>
 <style type="text/css">
 .td1{
 padding-left:10px;
@@ -93,7 +103,7 @@ margin-right: 50%;
 	
 	
 	<td class="td1"><input type="button" class="btn btn-default" id="btn1" value="<<<<"></td>
-	<td class="td"><input type="text" class="form-control input-lg field1" id="focusedInput " placeholder="Location"/></td>
+	<td class="td"><input type="text" class="form-control input-lg field1" id="spchar" placeholder="Location"/></td>
 	<td style="width: 10px;"><input type="button" class="btn btn-default" id="btn2" value="clear"></td>
 </tr>
 	 
@@ -126,7 +136,7 @@ margin-right: 50%;
 $(document).ready(function(){
 		    $('#btn1').click(function()
 		    {
-		    	var s=$('.field1').val();		    	
+		    	var s=$('.field1').val();
 		    	var s1=$('.field2').val();
 		    	s1=s1+s+",";
 		         $('.field2').val(s1);

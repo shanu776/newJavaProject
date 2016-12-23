@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+		pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -231,25 +231,24 @@ margin-right: 50%;
 <script type="text/javascript">
 $(document).ready(function(){ 
 	$('#btn1').click(function(){	
-	$("<tr><td></td><td><input type='text' name='location_name' class='form-control input-lg' pattern='^[a-zA-Z0-9]+$' id='spchar' placeholder='Location' value=''/></td></tr>")
+	$("<tr><td></td><td><input type='text' name='location_name' class='form-control input-lg' pattern='^[a-zA-Z0-9 ]+$' id='spchar' placeholder='Location' value=''/></td></tr>")
 	.insertAfter("#locTag");
 	});
 	
 	$('#btn2').click(function(){	
-	$("<tr><td></td><td><input type='text' name='department_name' class='form-control input-lg' pattern='^[a-zA-Z0-9]+$' id='spchar' placeholder='Department' value=''/></td></tr>")
+	$("<tr><td></td><td><input type='text' name='department_name' class='form-control input-lg' pattern='^[a-zA-Z0-9 ]+$' id='spchar' placeholder='Department' value=''/></td></tr>")
 	.insertAfter("#depTag");
 	});
 });
 $(document).ready(function(){
 	$("#spchar").on("keypress",function(){
-		 var regex = new RegExp("^[a-zA-Z0-9]+$");
+		 var regex = new RegExp("^[a-zA-Z0-9 ]+$");
 		    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
 		    if (!regex.test(key)) {
-		     /*   event.preventDefault(); */
+		     /*event.preventDefault();*/
 		       return false;}
 	})
 })
 </script>
-
 </body>
 </html>

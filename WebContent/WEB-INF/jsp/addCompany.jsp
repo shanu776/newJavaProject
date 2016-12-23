@@ -90,22 +90,23 @@ margin-right: 50%;
 	<div class="table-responsive" style="margin-top:10px; width: 450px; height: 150px;">
 	<table class="table table-bordered table-hover">
 	<c:if test="${!empty department }">
-	<tr class="active">
+	<tr class="active" >
 	<th>Id</th>
 	<th>Department</th>
 	<th>Delete</th>
 	</tr>
+	<tbody>
 	<c:forEach items="${department }" var="department">
 	<tr>
 	<td><c:out value="${department.id}"></c:out></td>
 	<td><c:out value="${department.department_name }"></c:out></td>
-	<td><a href="deleteDepartment.html?id=${department.id }">X</a>
+	<td><a href="deleteDepartment.html?id=${department.id}">X</a>
 	</tr>
 	</c:forEach>
+	</tbody>
 	</c:if>
 	</table>
 	</div>
-
 <form:form action="saveDepartment.html" modelAttribute="department">
 <table>
 	<tr>
@@ -128,6 +129,7 @@ margin-right: 50%;
 <th>City</th>
 <th>Delete</th>
 </tr>
+<div>
 <c:forEach items="${location }" var="location1">
 <tr>
 <td><c:out value="${location1.id}"></c:out></td>
@@ -137,6 +139,7 @@ margin-right: 50%;
 <td><a href="deleteLocation.html?id=${location1.id }">X</a></td>
 </tr>
 </c:forEach>
+</div>
 </c:if>
 </table>
 </div>
@@ -170,6 +173,11 @@ margin-right: 50%;
 </table>
 </form:form>
 </div>
-
+<script type="text/javascript">
+$(document).ready(function(){
+$(".table-responsive").animate({scrollTop: $(document).height() }, "slow");
+return false;
+});
+</script>
 </body>
 </html>

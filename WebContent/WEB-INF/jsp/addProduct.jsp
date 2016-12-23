@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
     <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -165,7 +164,7 @@ margin-right:50%;
 		<tr id="itemTag">
 		<td><label>Related Items:</label></td>
 		<td>
-		<input type="text" name="${status.expression}" class="form-control input-lg" id="focusedInput" value="" placeholder="Related Items" >
+		<input type="text" name="${status.expression}" class="form-control input-lg" id="spchar" value="" placeholder="Related Items" >
 		</td>
 		<td><input type="button" value="+" id="btn"></td>
 		</tr>
@@ -178,9 +177,16 @@ margin-right:50%;
 <script type="text/javascript">
 $(document).ready(function(){ 
 	$('#btn').click(function(){	
-	$("<tr><td></td><td><input type='text' name='item_name' class='form-control input-lg' pattern='^[a-zA-Z0-9]+$' placeholder='Related_Items' value=''/></td></tr>")
+	$("<tr><td></td><td><input type='text' name='item_name' class='form-control input-lg' pattern='^[a-zA-Z0-9 ]+$' placeholder='Related_Items' value=''required title=' remove special char'/></td></tr>")
 	.insertAfter("#itemTag");
 	});
+});
+$("#spchar").on("keypress",function(){
+	 var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	    if (!regex.test(key)) {
+	     /*   event.preventDefault(); */
+	       return false;}
 });
 </script>
 </body>

@@ -4,7 +4,6 @@
 <html>
 <head>
 <style type="text/css">
-
 .a_header{
 margin-top: 20px;
 margin-right:15px;

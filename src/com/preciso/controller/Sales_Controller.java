@@ -26,6 +26,7 @@ import com.preciso.model.Country;
 import com.preciso.model.CustomerDepartment;
 import com.preciso.model.CustomerLocation;
 import com.preciso.model.State;
+import com.preciso.reports.CustomerReport;
 import com.preciso.service.AddCustomerSalesService;
 import com.preciso.service.CSCService;
 
@@ -179,7 +180,13 @@ public class Sales_Controller {
 		model.put("city", cscService.getCity(id));
 		return new ModelAndView("showCity",model);
 	}
-	
+/*------------------------------------------------------------Generate Report-------------------------------------------------------------------*/	
+	@RequestMapping(value="customerReport")
+	public ModelAndView customerReport()
+	{
+		new CustomerReport(addCustomerSalesService.listAddCustomerSales());
+		return new ModelAndView("redirect:viewSalesCustomerData.html");
+	}
 /*---------------------------------------------------------MethodsForBeanModeling------------------------------------------------------------------*/	
 	
 	private AddCustomerSalesBean prepareAddCustomerSalesBean(AddCustomerSales customerSalesData) {

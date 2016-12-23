@@ -57,7 +57,7 @@ private String im_type;
 @Column(name="im_name")
 private String im_name;
 
-@Column(name="photo")
+@Column(name="photo",length=1000000)
 @Lob
 private Blob photo;
 
