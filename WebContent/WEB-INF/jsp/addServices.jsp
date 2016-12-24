@@ -22,7 +22,8 @@ margin-right:50%;
 <body>
 <form:form action="saveServices.html" method="post" modelAttribute="services">
 <form:hidden path="service_id"/>
-<div class="container" style="margin-left: 25%;">
+<div class="container" style="width: 25%;display: inline-block;"></div>
+<div class="container" style="width: 40%">
 <table>
 <tr>
 	<td><form:label path="description">Description</form:label></td>

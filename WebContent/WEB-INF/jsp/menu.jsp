@@ -16,7 +16,7 @@ border-radius:5px;
 background-color: #161032;
 }
 .menuli{
-/* width:100%; */
+/* width:100%;  */
 height:30px;
 margin-top:10px;
 margin-left:-27%; 
@@ -42,8 +42,8 @@ text-decoration: none;
 <ul>
 <c:if test="${!empty company }">
 <c:forEach items="${company }" var="cp">
-<li class="menuli"><a href="updateCompany.html?id=${cp.id }" style="text-decoration: none;">&nbsp; &nbsp; &nbsp;Update </a></li>
-<li class="menuli"><a href="deleteCompany.html?id=${cp.id }" style="text-decoration: none;">&nbsp; &nbsp; &nbsp;Delete </a>
+<li class="menuli"><a href="updateCompany.html?id=${cp.id }" style="text-decoration: none;">&nbsp; &nbsp;Update </a></li>
+<li class="menuli"><a href="deleteCompany.html?id=${cp.id }" style="text-decoration: none;">&nbsp; &nbsp;Delete </a>
 </li>
 </c:forEach>
 </c:if>
@@ -52,8 +52,8 @@ text-decoration: none;
 <div class="menu1"> <font size="5" color="#fffff">&nbsp;User</font></div>
 <div class="item1">
 <ul>
-<li class="menuli"><a href="userForm.html">&nbsp; &nbsp; &nbsp;AdddUser</a></li>
-<li class="menuli"><a href="viewUser.html">&nbsp; &nbsp; &nbsp;ViewUser</a></li>
+<a href="userForm.html"><li class="menuli">&nbsp; &nbsp; AddUser</li></a>
+<a href="viewUser.html"><li class="menuli">&nbsp; &nbsp; ViewUser</li></a>
 </ul>
 </div>
 <div class="menu2"> <font size="5" color="#fffff">&nbsp;menu_2</font></div>

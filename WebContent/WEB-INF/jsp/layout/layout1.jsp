@@ -9,7 +9,7 @@
 </head>
 <body>
 		<div><tiles:insertAttribute name="header" /></div>
-		<div><tiles:insertAttribute name="body" /></div>
+		<div style="float:left;padding:35px;width:100%;"><tiles:insertAttribute name="body" /></div>
 		
 </body>
 </html>

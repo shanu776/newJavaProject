@@ -142,7 +142,8 @@ public class Sales_Controller {
 		List<CustomerLocation> list1=addCustomerSalesService.listCustomerLocation(list);
 		list.setLocation(list1);
 		list.setDepartment(list2);
-	    model.put("customerSales", prepareAddCustomerSalesBean(list));	    
+	    model.put("customerSales", prepareAddCustomerSalesBean(list));
+	    model.put("country", cscService.getCountry());
 		return new ModelAndView("addCustomerSales",model);		
 	}
 

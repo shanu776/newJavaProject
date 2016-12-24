@@ -12,6 +12,7 @@
 	</definition>
 	
 	<definition name="base.definition1" template="WEB-INF/jsp/layout/layout1.jsp">
+	<put-attribute name="title" value=""></put-attribute>
 	 <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
 	 <put-attribute name="body" value="" />
 	</definition>
